@@ -1,10 +1,10 @@
 // src/pages/Politics.tsx
 import React, { useEffect } from 'react';
-import ArticleCard from '../components/ArticleCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../app/store';
 import { fetchPoliticsArticles } from '../features/articles/articlesSlice';
-import PieChart from '../components/PieChart'; // Add this line
+import ArticleCard from '../components/ArticleCard';
+import PieChart from '../components/PieChart';
 
 const Politics: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -14,13 +14,8 @@ const Politics: React.FC = () => {
     dispatch(fetchPoliticsArticles());
   }, [dispatch]);
 
-  const cnnArticles = politicsArticles
-    .filter(article => article.source === 'cnn')
-    .slice(0, 15); // Limit to 15 articles
-
-  const foxArticles = politicsArticles
-    .filter(article => article.source === 'fox-news')
-    .slice(0, 15); // Limit to 15 articles
+  const cnnArticles = politicsArticles.filter(article => article.source === 'cnn').slice(0, 15);
+  const foxArticles = politicsArticles.filter(article => article.source === 'fox-news').slice(0, 15);
 
   const pairedArticles = [];
   for (let i = 0; i < Math.max(cnnArticles.length, foxArticles.length); i++) {
@@ -42,9 +37,10 @@ const Politics: React.FC = () => {
           </div>
         ))}
       </div>
-      <PieChart /> {/* Add this line */}
+      <PieChart />
     </div>
   );
 };
 
 export default Politics;
+

@@ -1,3 +1,4 @@
+// src/components/CommentSection.tsx
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../app/store';
@@ -9,7 +10,7 @@ interface CommentSectionProps {
 
 const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
   const dispatch: AppDispatch = useDispatch();
-  const comments = useSelector((state: RootState) => state.comments.comments);
+  const comments = useSelector((state: RootState) => state.comments.commentsByArticleId[articleId] || []);
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const [comment, setComment] = useState('');
   const [expanded, setExpanded] = useState(false);
@@ -60,3 +61,4 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
 };
 
 export default CommentSection;
+
