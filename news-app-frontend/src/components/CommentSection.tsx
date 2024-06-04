@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../app/store';
 import { fetchComments, addComment } from '../features/comments/commentsSlice';
 import { selectCommentsByArticleId } from '../features/comments/commentsSelectors';
+import Modal from 'react-modal';
+import './ModalStyles.css';
 
 interface CommentSectionProps {
   articleId: number;
@@ -16,6 +18,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const [comment, setComment] = useState('');
   const [expanded, setExpanded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchComments(articleId));
@@ -23,7 +26,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
 
   const handleAddComment = () => {
     if (!isAuthenticated) {
-      alert('You must be logged in to comment.');
+      setIsModalOpen(true);
       return;
     }
     if (comment.length > 200) {
@@ -32,6 +35,10 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
     }
     dispatch(addComment({ articleId, comment }));
     setComment('');
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -58,11 +65,18 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
           </div>
         </div>
       )}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Authentication Required"
+        ariaHideApp={false} // Important for screen readers
+      >
+        <h2>Authentication Required</h2>
+        <p>You must be logged in to comment.</p>
+        <button onClick={closeModal}>Close</button>
+      </Modal>
     </div>
   );
 };
 
 export default CommentSection;
-
-
-
