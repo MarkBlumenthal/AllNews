@@ -39,6 +39,7 @@ const PieChart: React.FC = () => {
   };
 
   const options = {
+    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -55,9 +56,14 @@ const PieChart: React.FC = () => {
   };
 
   return (
-    <div className="pie-chart">
-      <h2>Article Ratings</h2>
-      <Pie data={data} options={options} />
+    <div className="pie-chart-container">
+      <div className="chart-text">
+        <p>This chart indicates which articles from the political spectrum, CNN - Liberal and Fox-News - Conservative, are the most popular based on you, our viewers ratings. Help us by always keeping it up to date by either giving the articles a thumbs up or thumbs down.</p>
+      </div>
+      <div className="pie-chart">
+        <h2>Article Ratings</h2>
+        <Pie data={data} options={options} width={200} height={200} />
+      </div>
     </div>
   );
 };
