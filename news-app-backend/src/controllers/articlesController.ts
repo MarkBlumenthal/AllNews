@@ -83,14 +83,52 @@ export const addRating = async (req: AuthRequest, res: Response): Promise<void> 
       return;
     }
     const articleId = articleResult.rows[0].id;
-    console.log(`Inserting rating: userId=${userId}, articleId=${articleId}, rating=${rating}`);
 
-    const insertResult = await pool.query(
-      'INSERT INTO article_ratings (user_id, article_id, rating) VALUES ($1, $2, $3) ON CONFLICT (user_id, article_id) DO UPDATE SET rating = $3',
-      [userId, articleId, rating]
+    const existingRating = await pool.query('SELECT rating FROM article_ratings WHERE user_id = $1 AND article_id = $2', [userId, articleId]);
+
+    if (existingRating.rows.length > 0) {
+      const currentRating = existingRating.rows[0].rating;
+      if (currentRating === rating) {
+        const thumbsUpResult = await pool.query(
+          'SELECT COUNT(*) as thumbs_up FROM article_ratings WHERE article_id = $1 AND rating = true',
+          [articleId]
+        );
+        const thumbsDownResult = await pool.query(
+          'SELECT COUNT(*) as thumbs_down FROM article_ratings WHERE article_id = $1 AND rating = false',
+          [articleId]
+        );
+
+        const thumbsUpCount = parseInt(thumbsUpResult.rows[0].thumbs_up, 10);
+        const thumbsDownCount = parseInt(thumbsDownResult.rows[0].thumbs_down, 10);
+
+        res.status(200).json({ message: 'Rating already set', thumbs_up: thumbsUpCount, thumbs_down: thumbsDownCount });
+        return;
+      }
+
+      await pool.query(
+        'UPDATE article_ratings SET rating = $3 WHERE user_id = $1 AND article_id = $2',
+        [userId, articleId, rating]
+      );
+    } else {
+      await pool.query(
+        'INSERT INTO article_ratings (user_id, article_id, rating) VALUES ($1, $2, $3)',
+        [userId, articleId, rating]
+      );
+    }
+
+    const thumbsUpResult = await pool.query(
+      'SELECT COUNT(*) as thumbs_up FROM article_ratings WHERE article_id = $1 AND rating = true',
+      [articleId]
     );
-    console.log('Insert Result:', insertResult);
-    res.status(200).json({ message: 'Rating added/updated successfully' });
+    const thumbsDownResult = await pool.query(
+      'SELECT COUNT(*) as thumbs_down FROM article_ratings WHERE article_id = $1 AND rating = false',
+      [articleId]
+    );
+
+    const thumbsUpCount = parseInt(thumbsUpResult.rows[0].thumbs_up, 10);
+    const thumbsDownCount = parseInt(thumbsDownResult.rows[0].thumbs_down, 10);
+
+    res.status(200).json({ message: 'Rating updated successfully', thumbs_up: thumbsUpCount, thumbs_down: thumbsDownCount });
   } catch (error: any) {
     console.error('Error adding/updating rating:', error);
     res.status(500).json({ error: error.message });
@@ -139,6 +177,5 @@ export const getRatings = async (req: Request, res: Response): Promise<void> => 
     res.status(500).json({ error: error.message });
   }
 };
-
 
 

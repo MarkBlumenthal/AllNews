@@ -41,7 +41,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
 
     if (API_URL) {
       try {
-        await axios.post(
+        const response = await axios.post(
           `${API_URL}/api/articles/rate`,
           { articleUrl: article.url, rating },
           {
@@ -50,14 +50,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
             }
           }
         );
+        const { thumbs_up, thumbs_down } = response.data;
+        setThumbsUp(thumbs_up);
+        setThumbsDown(thumbs_down);
         setUserRating(rating);
-        if (rating) {
-          setThumbsUp(thumbsUp + 1);
-          if (userRating === false) setThumbsDown(thumbsDown - 1);
-        } else {
-          setThumbsDown(thumbsDown + 1);
-          if (userRating === true) setThumbsUp(thumbsUp - 1);
-        }
       } catch (error) {
         console.error('Error adding/updating rating:', error);
       }
@@ -79,8 +75,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
           Source: {article.source.toUpperCase()}
         </div>
         <div className="rating">
-          <button className="btn btn-success" onClick={() => handleRating(true)}>👍 {thumbsUp}</button>
-          <button className="btn btn-danger" onClick={() => handleRating(false)}>👎 {thumbsDown}</button>
+          <button className={`btn btn-success ${userRating === true ? 'active' : ''}`} onClick={() => handleRating(true)}>👍 {thumbsUp}</button>
+          <button className={`btn btn-danger ${userRating === false ? 'active' : ''}`} onClick={() => handleRating(false)}>👎 {thumbsDown}</button>
         </div>
       </div>
     </div>
@@ -88,7 +84,3 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
 };
 
 export default ArticleCard;
-
-
-
-
