@@ -24,7 +24,8 @@ const Politics: React.FC = () => {
 
   return (
     <div className="container">
-      <h1 className="my-4">Political News</h1>
+      <h1 className="my-4">Political News from both sides</h1>
+      <h3 className="my-4">Here you can see all News articles from CNN and FOX side by side </h3>
       <div className="row">
         {pairedArticles.map((pair, index) => (
           <div className="row mb-4" key={index}>

@@ -11,7 +11,7 @@ import About from './pages/About';
 import RegisterLogin from './pages/Register';
 import Preference from './pages/Preference';
 import ProtectedRoute from './components/ProtectedRoute';
-import PieChart from './components/PieChart'; // Add this line
+import PieChart from './components/PieChart'; 
 
 const Home: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -38,7 +38,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="container">
-      <h1 className="my-4">Political News from CNN and FOX</h1>
+      <h1 className="my-4">Political News from the Liberal Left & Conservative Right</h1>
+      <h3 className="my-4">Letting you choose what News you want to read</h3>
       <div className="row">
         {pairedArticles.map((pair, index) => (
           <div className="row mb-4" key={index}>
@@ -51,7 +52,7 @@ const Home: React.FC = () => {
           </div>
         ))}
       </div>
-      <PieChart /> {/* Add this line */}
+      <PieChart /> 
     </div>
   );
 };

@@ -36,7 +36,7 @@ const RegisterLogin: React.FC = () => {
         navigate('/preferences');
       }
     } catch (error: any) {
-      setMessage(error.response.data.message || 'An error occurred');
+      setMessage(error.response.data.message || 'That username or email already exists');
     }
   };
 

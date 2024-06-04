@@ -6,5 +6,5 @@ export const fetchArticlesFromAPI = async () => {
   return response.data;
 };
 
-export {};  // Ensure it's recognized as a module
+export {};  
 

@@ -2,12 +2,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import articlesReducer from '../features/articles/articlesSlice';
 import commentsReducer from '../features/comments/commentsSlice';
-import authReducer from '../features/auth/authSlice'; // Import the auth reducer
+import authReducer from '../features/auth/authSlice'; 
 
 export const store = configureStore({
   reducer: {
     articles: articlesReducer,
-    auth: authReducer, // Add auth reducer here
+    auth: authReducer, 
     comments: commentsReducer,
   },
 });
