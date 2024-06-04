@@ -4,6 +4,7 @@ import ArticleCard from '../components/ArticleCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../app/store';
 import { fetchPoliticsArticles } from '../features/articles/articlesSlice';
+import PieChart from '../components/PieChart'; // Add this line
 
 const Politics: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -41,6 +42,7 @@ const Politics: React.FC = () => {
           </div>
         ))}
       </div>
+      <PieChart /> {/* Add this line */}
     </div>
   );
 };

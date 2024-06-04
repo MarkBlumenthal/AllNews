@@ -1,3 +1,4 @@
+// src/components/PieChart.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pie } from 'react-chartjs-2';
@@ -20,24 +21,43 @@ const PieChart: React.FC = () => {
     fetchRatings();
   }, []);
 
+  const totalCnnLikes = ratings.cnn.thumbs_up;
+  const totalFoxLikes = ratings['fox-news'].thumbs_up;
+  const totalLikes = totalCnnLikes + totalFoxLikes;
+  const cnnPercentage = totalLikes > 0 ? (totalCnnLikes / totalLikes) * 100 : 0;
+  const foxPercentage = totalLikes > 0 ? (totalFoxLikes / totalLikes) * 100 : 0;
+
   const data = {
-    labels: ['CNN', 'Fox News'],
+    labels: [`CNN ${cnnPercentage.toFixed(2)}%`, `Fox News ${foxPercentage.toFixed(2)}%`],
     datasets: [
       {
-        data: [
-          ratings.cnn.thumbs_up - ratings.cnn.thumbs_down,
-          ratings['fox-news'].thumbs_up - ratings['fox-news'].thumbs_down,
-        ],
+        data: [totalCnnLikes, totalFoxLikes],
         backgroundColor: ['blue', 'red'],
         hoverBackgroundColor: ['#0000FF', '#FF0000']
       }
     ]
   };
 
+  const options = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (context: any) {
+            const label = context.label || '';
+            const value = context.raw || 0;
+            const total = context.chart._metasets[context.datasetIndex].total;
+            const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : 0;
+            return `${label}: ${percentage}%`;
+          }
+        }
+      }
+    }
+  };
+
   return (
     <div className="pie-chart">
       <h2>Article Ratings</h2>
-      <Pie data={data} />
+      <Pie data={data} options={options} />
     </div>
   );
 };

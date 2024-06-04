@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../app/store';
 import { fetchArticles } from '../features/articles/articlesSlice';
 import ArticleCard from '../components/ArticleCard';
+import PieChart from '../components/PieChart'; // Add this line
 
 const Preference: React.FC = () => {
   const [preference, setPreference] = useState<'liberal' | 'conservative'>('liberal');
@@ -51,6 +52,7 @@ const Preference: React.FC = () => {
           </div>
         ))}
       </div>
+      <PieChart /> {/* Add this line */}
     </div>
   );
 };
