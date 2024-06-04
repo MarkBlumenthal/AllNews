@@ -5,7 +5,7 @@ import cors from 'cors';
 import articlesRouter from './routes/articles';
 import userRouter from './routes/user';
 import commentsRouter from './routes/comments';
-import path from 'path'
+// import path from 'path'
 
 dotenv.config();
 
