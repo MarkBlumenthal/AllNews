@@ -1,12 +1,12 @@
 /* src/components/ArticleCard.css */
 
 .card {
-  margin-bottom: 1rem;  /* Adjust bottom margin */
+  margin-bottom: 1rem;
 }
 
 .card-img-top {
-  height: 200px;  /* Adjust height as needed */
-  object-fit: cover;  /* Ensure the image covers the area without distortion */
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-body {
@@ -41,9 +41,28 @@
   margin-top: 1rem;
 }
 
-.btn-success, .btn-danger {
-  width: 48%;
+.emoji {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
+
+.emoji:hover {
+  transform: scale(1.2);
+}
+
+.emoji:active {
+  transform: scale(1.5);
+}
+
+.active {
+  color: green;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
 
   
   
