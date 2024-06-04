@@ -15,6 +15,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   const [thumbsUp, setThumbsUp] = useState(0);
   const [thumbsDown, setThumbsDown] = useState(0);
   const [userRating, setUserRating] = useState<null | boolean>(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const token = useSelector((state: RootState) => state.auth.token);
 
@@ -37,7 +38,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   }, [article.url, API_URL]);
 
   const handleRating = async (rating: boolean) => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated) {
+      setErrorMessage('Sorry, but you must be signed in to be able to rate the articles.');
+      return;
+    }
 
     if (API_URL) {
       try {
@@ -54,6 +58,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
         setThumbsUp(thumbs_up);
         setThumbsDown(thumbs_down);
         setUserRating(rating);
+        setErrorMessage(''); // Clear any previous error message
       } catch (error) {
         console.error('Error adding/updating rating:', error);
       }
@@ -78,9 +83,11 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
           <button className={`btn btn-success ${userRating === true ? 'active' : ''}`} onClick={() => handleRating(true)}>👍 {thumbsUp}</button>
           <button className={`btn btn-danger ${userRating === false ? 'active' : ''}`} onClick={() => handleRating(false)}>👎 {thumbsDown}</button>
         </div>
+        {errorMessage && <div className="alert alert-warning mt-2">{errorMessage}</div>}
       </div>
     </div>
   );
 };
 
 export default ArticleCard;
+
