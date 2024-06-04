@@ -1,23 +1,4 @@
-// // src/routes/articles.ts
-// import { Router } from 'express';
-// import { getArticles, fetchAndStoreArticles, getLatestArticles, getPoliticsArticles, addRating, getRatings } from '../controllers/articlesController';
-// import { authenticateJWT } from '../middleware/auth';
-
-// const router = Router();
-
-// router.get('/', getArticles);
-// router.post('/fetch', fetchAndStoreArticles);
-// router.get('/latest', getLatestArticles);
-// router.get('/politics', getPoliticsArticles);
-// router.post('/rate', authenticateJWT, addRating); // Apply middleware to rate route
-// router.get('/ratings', getRatings);
-
-// export default router;
-
-
-
-
-
+// src/routes/articles.ts
 import { Router } from 'express';
 import { getArticles, fetchAndStoreArticles, getLatestArticles, getPoliticsArticles, addRating, getRatings } from '../controllers/articlesController';
 import authMiddleware from '../middleware/auth'; // Ensure this middleware sets req.user

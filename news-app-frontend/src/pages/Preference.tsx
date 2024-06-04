@@ -1,4 +1,4 @@
-// // src/pages/Preference.tsx
+// src/pages/Preference.tsx
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../app/store';

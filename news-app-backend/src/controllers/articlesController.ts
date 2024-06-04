@@ -1,4 +1,4 @@
-// // src/controllers/articlesController.ts
+// src/controllers/articlesController.ts
 import { Request, Response } from 'express';
 import pool from '../config/db';
 import axios from 'axios';

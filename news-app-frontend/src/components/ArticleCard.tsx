@@ -1,4 +1,4 @@
-// // src/components/ArticleCard.tsx
+// src/components/ArticleCard.tsx
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';

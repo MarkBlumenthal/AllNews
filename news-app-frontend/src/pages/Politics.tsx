@@ -1,4 +1,4 @@
-// // src/pages/Politics.tsx
+// src/pages/Politics.tsx
 import React, { useEffect } from 'react';
 import ArticleCard from '../components/ArticleCard';
 import { useDispatch, useSelector } from 'react-redux';
