@@ -7,19 +7,24 @@ import './PieChart.css';
 
 const PieChart: React.FC = () => {
   const [ratings, setRatings] = useState({ cnn: { thumbs_up: 0, thumbs_down: 0 }, 'fox-news': { thumbs_up: 0, thumbs_down: 0 } });
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchRatings = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/articles/total-ratings`);
-        setRatings(response.data);
+        if (API_URL) {
+          const response = await axios.get(`${API_URL}/api/articles/total-ratings`);
+          setRatings(response.data);
+        } else {
+          console.error('API_URL is not defined');
+        }
       } catch (error) {
         console.error('Error fetching total ratings:', error);
       }
     };
 
     fetchRatings();
-  }, []);
+  }, [API_URL]);
 
   const totalCnnLikes = ratings.cnn.thumbs_up;
   const totalFoxLikes = ratings['fox-news'].thumbs_up;
@@ -69,3 +74,9 @@ const PieChart: React.FC = () => {
 };
 
 export default PieChart;
+
+
+
+
+
+
