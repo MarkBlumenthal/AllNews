@@ -1,28 +1,5 @@
  /* src/components/ModalStyles.css  */
- /* Modal overlay  */
-/* .ReactModal__Overlay {
-    background-color: rgba(0, 0, 0, 0.75) !important;
-  } */
-  
-   /* Modal content  */
-  /* .ReactModal__Content {
-    top: 50% !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin-right: -50% !important;
-    transform: translate(-50%, -50%) !important;
-    background-color: black !important;
-    color: white !important;
-    width: 300px !important;
-    padding: 20px !important;
-    border-radius: 8px !important;
-  } */
-
-  
-
-
-  /* Modal overlay */
+ /* Modal overlay */
 .ReactModal__Overlay {
   background-color: rgba(0, 0, 0, 0.75) !important;
 }

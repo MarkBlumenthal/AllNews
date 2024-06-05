@@ -1,0 +1,30 @@
+/* Style for the Show/Hide Comments button */
+.comment-section .toggle-comments-btn {
+    border-radius: 20px; /* Rounded corners */
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-bottom: 10px; /* Space below the button */
+  }
+  
+  /* Hover effect for the Show/Hide Comments button */
+  .comment-section .toggle-comments-btn:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+  }
+  
+  /* Style for the username */
+  .comment-section .comment-username {
+    font-size: 0.7rem; /* Smaller font size */
+    font-weight: bold; /* Bold text */
+    color: #666; /* Grey color */
+    margin-bottom: 5px; /* Space below the username */
+  }
+  
+  /* Style for the comment text */
+  .comment-section .comment-text {
+    font-size: 1rem; /* Normal font size */
+    margin-bottom: 10px; /* Space below the comment text */
+  }
+  
