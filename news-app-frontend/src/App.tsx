@@ -13,6 +13,8 @@ import Preference from './pages/Preference';
 import ProtectedRoute from './components/ProtectedRoute';
 import PieChart from './components/PieChart';
 import Footer from './components/Footer';
+import VideoBackground from './components/VideoBackground';
+import './App.css';
 
 const Home: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -34,24 +36,27 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="container">
-      <h1 className="my-4">Political News from the Liberal Left & Conservative Right</h1>
-      <h3 className="my-4">Letting you choose what News you want to read</h3>
-      <div className="row">
-        {pairedArticles.map((pair, index) => (
-          <div className="row mb-4" key={index}>
-            <div className="col-md-6 col-sm-12 mb-4">
-              {pair[0] && <ArticleCard article={pair[0]} />}
+    <>
+      <VideoBackground />
+      <div className="moved-up-container container">
+        <h1 className="my-4">Political News from the Liberal Left & Conservative Right</h1>
+        <h3 className="my-4">Letting you choose what News you want to read</h3>
+        <div className="row">
+          {pairedArticles.map((pair, index) => (
+            <div className="row mb-4" key={index}>
+              <div className="col-md-6 col-sm-12 mb-4">
+                {pair[0] && <ArticleCard article={pair[0]} />}
+              </div>
+              <div className="col-md-6 col-sm-12 mb-4">
+                {pair[1] && <ArticleCard article={pair[1]} />}
+              </div>
             </div>
-            <div className="col-md-6 col-sm-12 mb-4">
-              {pair[1] && <ArticleCard article={pair[1]} />}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <PieChart />
+        <Footer />
       </div>
-      <PieChart />
-      <Footer />
-    </div>
+    </>
   );
 };
 
