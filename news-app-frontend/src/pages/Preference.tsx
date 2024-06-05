@@ -6,6 +6,7 @@ import { fetchArticles } from '../features/articles/articlesSlice';
 import ArticleCard from '../components/ArticleCard';
 import PieChart from '../components/PieChart';
 import { selectAllArticles } from '../features/articles/articlesSelectors';
+import Footer from '../components/Footer';
 
 const Preference: React.FC = () => {
   const [preference, setPreference] = useState<'liberal' | 'conservative'>('liberal');
@@ -18,10 +19,6 @@ const Preference: React.FC = () => {
       dispatch(fetchArticles());
     }
   }, [articleStatus, dispatch]);
-
-  useEffect(() => {
-    console.log('Articles in Preferences:', articles);
-  }, [articles]);
 
   const filteredArticles = articles.filter(article =>
     preference === 'liberal' ? article.source === 'cnn' : article.source === 'fox-news'
@@ -54,11 +51,15 @@ const Preference: React.FC = () => {
         ))}
       </div>
       <PieChart />
+      <Footer />
     </div>
   );
 };
 
 export default Preference;
+
+
+
 
 
 

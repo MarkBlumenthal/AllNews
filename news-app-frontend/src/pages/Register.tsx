@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../features/auth/authSlice';
+import Footer from '../components/Footer';
 
 const RegisterLogin: React.FC = () => {
   const [isRegister, setIsRegister] = useState(true);
@@ -87,8 +88,11 @@ const RegisterLogin: React.FC = () => {
           {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
         </button>
       </div>
+      <Footer />
     </div>
   );
 };
 
 export default RegisterLogin;
+
+

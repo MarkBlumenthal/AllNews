@@ -1,11 +1,12 @@
 /* src/components/PieChart.css */
-  .pie-chart-container {
+.pie-chart-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap; /* Ensure items do not wrap to the next line */
     margin: 2rem auto;
     text-align: center;
+    margin-bottom: 100px; /* Add margin to avoid overlap */
   }
   
   .chart-text {

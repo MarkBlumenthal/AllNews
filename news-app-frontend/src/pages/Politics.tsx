@@ -1,15 +1,15 @@
 // src/pages/Politics.tsx
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../app/store';
+import { RootState, AppDispatch } from '../app/store';
 import { fetchPoliticsArticles } from '../features/articles/articlesSlice';
 import ArticleCard from '../components/ArticleCard';
 import PieChart from '../components/PieChart';
-import { selectPoliticsArticles } from '../features/articles/articlesSelectors';
+import Footer from '../components/Footer';
 
 const Politics: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const politicsArticles = useSelector(selectPoliticsArticles);
+  const politicsArticles = useSelector((state: RootState) => state.articles.politicsArticles);
 
   useEffect(() => {
     dispatch(fetchPoliticsArticles());
@@ -40,11 +40,10 @@ const Politics: React.FC = () => {
         ))}
       </div>
       <PieChart />
+      <Footer />
     </div>
   );
 };
 
 export default Politics;
-
-
 

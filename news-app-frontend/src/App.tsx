@@ -12,11 +12,11 @@ import RegisterLogin from './pages/Register';
 import Preference from './pages/Preference';
 import ProtectedRoute from './components/ProtectedRoute';
 import PieChart from './components/PieChart';
-import { selectHomeArticles } from './features/articles/articlesSelectors'; // Import memoized selector
+import Footer from './components/Footer';
 
 const Home: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const homeArticles = useSelector(selectHomeArticles);
+  const homeArticles = useSelector((state: RootState) => state.articles.homeArticles);
   const homeStatus = useSelector((state: RootState) => state.articles.homeStatus);
 
   useEffect(() => {
@@ -24,10 +24,6 @@ const Home: React.FC = () => {
       dispatch(fetchHomeArticles());
     }
   }, [homeStatus, dispatch]);
-
-  useEffect(() => {
-    console.log('Home Articles in Frontend:', homeArticles);
-  }, [homeArticles]);
 
   const cnnArticles = homeArticles.filter(article => article.source === 'cnn');
   const foxArticles = homeArticles.filter(article => article.source === 'fox-news');
@@ -54,6 +50,7 @@ const Home: React.FC = () => {
         ))}
       </div>
       <PieChart />
+      <Footer />
     </div>
   );
 };
@@ -74,4 +71,6 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
 
