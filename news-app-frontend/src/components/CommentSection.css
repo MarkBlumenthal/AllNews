@@ -28,3 +28,19 @@
     margin-bottom: 10px; /* Space below the comment text */
   }
   
+  /* Style for the comment button */
+  .comment-section .comment-btn {
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Slightly rounded corners */
+  }
+  
+  /* Hover effect for the comment button */
+  .comment-section .comment-btn:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+  }
+  
+  

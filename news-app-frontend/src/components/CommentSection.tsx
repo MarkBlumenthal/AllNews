@@ -68,7 +68,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
               placeholder="Add a comment"
               className="form-control mb-2"
             />
-            <button className="btn btn-primary" onClick={handleAddComment}>Comment</button>
+            <button className="comment-btn" onClick={handleAddComment}>Comment</button>
           </div>
         </div>
       )}
