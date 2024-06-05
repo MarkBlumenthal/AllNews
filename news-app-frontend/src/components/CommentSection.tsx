@@ -5,7 +5,8 @@
 // import { fetchComments, addComment } from '../features/comments/commentsSlice';
 // import { selectCommentsByArticleId } from '../features/comments/commentsSelectors';
 // import Modal from 'react-modal';
-// import './ModalStyles.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './ModalStyles.css'; // Import the CSS file
 
 // interface CommentSectionProps {
 //   articleId: number;
@@ -73,13 +74,15 @@
 //       >
 //         <h2>Authentication Required</h2>
 //         <p>You must be logged in to comment.</p>
-//         <button onClick={closeModal}>Close</button>
+//         <button className="round-button" onClick={closeModal}>Close</button>
 //       </Modal>
 //     </div>
 //   );
 // };
 
 // export default CommentSection;
+
+
 
 
 
@@ -136,7 +139,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
           <div>
             {comments.map((c) => (
               <div key={c.id}>
-                <p>{c.comment} - User ID: {c.user_id}</p>
+                <p>{c.comment} - Username: {c.username}</p>
               </div>
             ))}
           </div>
@@ -165,3 +168,5 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
 };
 
 export default CommentSection;
+
+
