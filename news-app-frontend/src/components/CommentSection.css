@@ -20,12 +20,14 @@
     font-weight: bold; /* Bold text */
     color: #666; /* Grey color */
     margin-bottom: 5px; /* Space below the username */
+    margin-right: 400px;
   }
   
   /* Style for the comment text */
   .comment-section .comment-text {
     font-size: 1rem; /* Normal font size */
     margin-bottom: 10px; /* Space below the comment text */
+   margin-right: 400px;
   }
   
   /* Style for the comment button */
