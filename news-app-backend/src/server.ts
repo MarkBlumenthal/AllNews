@@ -54,7 +54,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   'http://localhost:3000', // Local development
-  'https://allnews1-0.onrender.com/' // Deployed frontend (replace with your actual URL)
+  'https://allnews1-0.onrender.com' // Deployed frontend
 ];
 
 const corsOptions: CorsOptions = {
@@ -77,3 +77,4 @@ app.use('/api/comments', commentsRouter);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
