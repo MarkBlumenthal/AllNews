@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../features/auth/authSlice';
 import Footer from '../components/Footer';
-import './RegisterLogin.css'; // Import the CSS file
+import './RegisterLogin.css'; 
 
 const RegisterLogin: React.FC = () => {
   const [isRegister, setIsRegister] = useState(true);
@@ -25,7 +25,7 @@ const RegisterLogin: React.FC = () => {
           email,
           password,
         });
-        dispatch(loginSuccess(response.data.token)); // Simulate login
+        dispatch(loginSuccess(response.data.token)); 
         setMessage('Registration successful');
         navigate('/preferences');
       } else {
@@ -116,4 +116,9 @@ const RegisterLogin: React.FC = () => {
 };
 
 export default RegisterLogin;
+
+
+
+
+
 
