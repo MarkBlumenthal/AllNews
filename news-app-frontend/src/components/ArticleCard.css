@@ -1,82 +1,10 @@
 /* src/components/ArticleCard.css */
-
-/* .card {
-  margin-bottom: 1rem;
-}
-
-.card-img-top {
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-body {
-  text-align: left;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.card-text {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.btn-primary {
-  background-color: #080808;
-  border: none;
-}
-
-
-.card-footer {
-  background-color: #f8f9fa;
-  padding: 0.75rem 1.25rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
-  text-align: right;
-}
-
-.rating {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.emoji {
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.emoji:hover {
-  transform: scale(1.2);
-}
-
-.emoji:active {
-  transform: scale(1.5);
-}
-
-.active {
-  color: green;
-}
-
-.alert {
-  margin-top: 1rem;
-} */
-
-
-  
-  
-  
-  
-
-/* src/components/ArticleCard.css */
-
 .card {
   margin-bottom: 1rem;
   height: 100%; /* Ensures the card takes the full height */
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
 }
 
 .card-img-top {
@@ -141,4 +69,12 @@
 
 .alert {
   margin-top: 1rem;
+}
+
+.cnn-glow {
+  box-shadow: 0 0 10px 2px blue;
+}
+
+.fox-glow {
+  box-shadow: 0 0 10px 2px red;
 }
