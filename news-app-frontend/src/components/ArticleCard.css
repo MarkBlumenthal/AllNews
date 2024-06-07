@@ -1,6 +1,6 @@
 /* src/components/ArticleCard.css */
 
-.card {
+/* .card {
   margin-bottom: 1rem;
 }
 
@@ -62,10 +62,83 @@
 
 .alert {
   margin-top: 1rem;
+} */
+
+
+  
+  
+  
+  
+
+/* src/components/ArticleCard.css */
+
+.card {
+  margin-bottom: 1rem;
+  height: 100%; /* Ensures the card takes the full height */
+  display: flex;
+  flex-direction: column;
 }
 
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
 
-  
-  
-  
-  
+.card-body {
+  flex: 1; /* Ensures the card body takes up remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Ensures the text takes up available space */
+}
+
+.btn-primary {
+  background-color: #080808;
+  border: none;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  text-align: right;
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.emoji {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji:hover {
+  transform: scale(1.2);
+}
+
+.emoji:active {
+  transform: scale(1.5);
+}
+
+.active {
+  color: green;
+}
+
+.alert {
+  margin-top: 1rem;
+}
