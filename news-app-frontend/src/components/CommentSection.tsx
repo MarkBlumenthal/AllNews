@@ -49,11 +49,11 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
         className="toggle-comments-btn" 
         onClick={() => setExpanded(!expanded)}
       >
-        {expanded ? 'Comments' : 'Comments'}
+        {expanded ? 'Hide Comments' : 'Show Comments'}
       </button>
       {expanded && (
         <div>
-          <div>
+          <div className="comment-list">
             {comments.map((c) => (
               <div key={c.id}>
                 <p className="comment-username">Username: {c.username}</p>
@@ -61,7 +61,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
               </div>
             ))}
           </div>
-          <div>
+          <div className="comment-textarea">
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -87,3 +87,5 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
 };
 
 export default CommentSection;
+
+
