@@ -44,51 +44,60 @@ const RegisterLogin: React.FC = () => {
 
   return (
     <div className="register-page">
-      <div className="container">
-        <h1 className="my-4">{isRegister ? 'User Registration' : 'User Login'}</h1>
-        {message && <div className="alert alert-info">{message}</div>}
-        <form onSubmit={handleSubmit}>
-          {isRegister && (
-            <div className="mb-3">
-              <label htmlFor="username" className="form-label">Username</label>
-              <input
-                type="text"
-                className="form-control"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
+      <div className="register-container container d-flex justify-content-center align-items-center flex-column">
+        <div className="card register-card">
+          <div className="row no-gutters">
+            <div className="col-md-6 d-flex align-items-center justify-content-center">
+              <img src="/logo1.webp" alt="Website Logo" className="logo img-fluid"/>
             </div>
-          )}
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <div className="col-md-6">
+              <div className="card-body">
+                <h1 className="my-4">{isRegister ? 'User Registration' : 'User Login'}</h1>
+                {message && <div className="alert alert-info">{message}</div>}
+                <form onSubmit={handleSubmit}>
+                  <div className={`mb-3 ${isRegister ? '' : 'hidden-username'}`}>
+                    <label htmlFor="username" className="form-label">Username</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      required={isRegister}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="email" className="form-label">Email address</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary">{isRegister ? 'Register' : 'Login'}</button>
+                </form>
+                <div className="mt-3">
+                  <button className="btn btn-secondary" onClick={() => setIsRegister(!isRegister)}>
+                    {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">{isRegister ? 'Register' : 'Login'}</button>
-        </form>
-        <div className="mt-3">
-          <button className="btn btn-secondary" onClick={() => setIsRegister(!isRegister)}>
-            {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
-          </button>
         </div>
       </div>
       <Footer />
@@ -97,4 +106,7 @@ const RegisterLogin: React.FC = () => {
 };
 
 export default RegisterLogin;
+
+
+
 
