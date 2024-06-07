@@ -42,11 +42,19 @@ const RegisterLogin: React.FC = () => {
     }
   };
 
+  const handleToggle = () => {
+    setIsRegister(!isRegister);
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setMessage('');
+  };
+
   return (
     <div className="register-page">
       <div className="register-container container d-flex justify-content-center align-items-center flex-column">
         <div className="card register-card">
-          <div className="row no-gutters">
+          <div className="row no-gutters flex-column flex-md-row">
             <div className="col-md-6 d-flex align-items-center justify-content-center">
               <img src="/logo1.webp" alt="Website Logo" className="logo img-fluid"/>
             </div>
@@ -55,17 +63,19 @@ const RegisterLogin: React.FC = () => {
                 <h1 className="my-4">{isRegister ? 'User Registration' : 'User Login'}</h1>
                 {message && <div className="alert alert-info">{message}</div>}
                 <form onSubmit={handleSubmit}>
-                  <div className={`mb-3 ${isRegister ? '' : 'hidden-username'}`}>
-                    <label htmlFor="username" className="form-label">Username</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required={isRegister}
-                    />
-                  </div>
+                  {isRegister && (
+                    <div className={`mb-3 ${isRegister ? '' : 'hidden-username'}`}>
+                      <label htmlFor="username" className="form-label">Username</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required={isRegister}
+                      />
+                    </div>
+                  )}
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input
@@ -88,13 +98,13 @@ const RegisterLogin: React.FC = () => {
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary">{isRegister ? 'Register' : 'Login'}</button>
+                  <div className="button-group">
+                    <button type="submit" className="btn btn-primary">{isRegister ? 'Register' : 'Login'}</button>
+                    <button type="button" className="btn btn-secondary ml-2" onClick={handleToggle}>
+                      {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
+                    </button>
+                  </div>
                 </form>
-                <div className="mt-3">
-                  <button className="btn btn-secondary" onClick={() => setIsRegister(!isRegister)}>
-                    {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -106,7 +116,4 @@ const RegisterLogin: React.FC = () => {
 };
 
 export default RegisterLogin;
-
-
-
 
