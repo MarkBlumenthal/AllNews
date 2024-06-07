@@ -121,6 +121,7 @@
 
 
 
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -138,13 +139,14 @@ const RegisterLogin: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Use environment variable or fallback to local API
   const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (isRegister) {
-        const response = await axios.post(`${API_URL}/users/register`, {
+        const response = await axios.post(`${API_URL}/api/users/register`, {
           username,
           email,
           password,
@@ -153,7 +155,7 @@ const RegisterLogin: React.FC = () => {
         setMessage('Registration successful');
         navigate('/preferences');
       } else {
-        const response = await axios.post(`${API_URL}/users/login`, {
+        const response = await axios.post(`${API_URL}/api/users/login`, {
           email,
           password,
         });
@@ -180,7 +182,7 @@ const RegisterLogin: React.FC = () => {
         <div className="card register-card">
           <div className="row no-gutters flex-column flex-md-row">
             <div className="col-md-6 d-flex align-items-center justify-content-center left-side">
-              <img src="/logo1.webp" alt="Website Logo" className="logo img-fluid"/>
+              <img src="/logo1.webp" alt="Website Logo" className="logo img-fluid" />
             </div>
             <div className="col-md-6 right-side">
               <div className="card-body">
@@ -188,7 +190,7 @@ const RegisterLogin: React.FC = () => {
                 {message && <div className="alert alert-info">{message}</div>}
                 <form onSubmit={handleSubmit}>
                   {isRegister && (
-                    <div className={`mb-3 ${isRegister ? '' : 'hidden-username'}`}>
+                    <div className="mb-3">
                       <label htmlFor="username" className="form-label">Username</label>
                       <input
                         type="text"
@@ -196,7 +198,7 @@ const RegisterLogin: React.FC = () => {
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        required={isRegister}
+                        required
                       />
                     </div>
                   )}
@@ -240,4 +242,9 @@ const RegisterLogin: React.FC = () => {
 };
 
 export default RegisterLogin;
+
+
+
+
+
 
