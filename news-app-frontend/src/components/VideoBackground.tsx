@@ -4,7 +4,7 @@ import './VideoBackground.css';
 
 const VideoBackground: React.FC = () => {
   return (
-    <div className="video-container">
+    <div className="video-container fade-in">
       <video autoPlay loop muted className="video-background">
         <source src="/istockphoto-1370739605-640_adpp_is.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -14,3 +14,4 @@ const VideoBackground: React.FC = () => {
 };
 
 export default VideoBackground;
+

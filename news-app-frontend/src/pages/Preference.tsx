@@ -25,44 +25,35 @@ const Preference: React.FC = () => {
   ).slice(0, 12);
 
   return (
-    <>
-      <div className="container">
-        <h1 className="my-4">Select Your News Preference</h1>
-        <div className="btn-group mb-4" role="group" aria-label="News Preference">
-          <button
-            type="button"
-            className={`btn btn-primary ${preference === 'liberal' ? 'active' : ''}`}
-            onClick={() => setPreference('liberal')}
-          >
-            Liberal Media
-          </button>
-          <button
-            type="button"
-            className={`btn btn-primary ${preference === 'conservative' ? 'active' : ''}`}
-            onClick={() => setPreference('conservative')}
-          >
-            Conservative Media
-          </button>
-        </div>
-        <div className="row">
-          {filteredArticles.map(article => (
-            <div className="col-md-6 col-lg-4 mb-4" key={article.id}>
-              <ArticleCard article={article} />
-            </div>
-          ))}
-        </div>
-        <PieChart />
+    <div className="container fade-in">
+      <h1 className="my-4">Select Your News Preference</h1>
+      <div className="btn-group mb-4" role="group" aria-label="News Preference">
+        <button
+          type="button"
+          className={`btn btn-primary ${preference === 'liberal' ? 'active' : ''}`}
+          onClick={() => setPreference('liberal')}
+        >
+          Liberal Media
+        </button>
+        <button
+          type="button"
+          className={`btn btn-primary ${preference === 'conservative' ? 'active' : ''}`}
+          onClick={() => setPreference('conservative')}
+        >
+          Conservative Media
+        </button>
       </div>
+      <div className="row">
+        {filteredArticles.map(article => (
+          <div className="col-md-6 col-lg-4 mb-4" key={article.id}>
+            <ArticleCard article={article} />
+          </div>
+        ))}
+      </div>
+      <PieChart />
       <Footer />
-    </>
+    </div>
   );
 };
 
 export default Preference;
-
-
-
-
-
-
-

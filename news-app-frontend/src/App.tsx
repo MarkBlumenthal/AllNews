@@ -38,7 +38,7 @@ const Home: React.FC = () => {
   return (
     <>
       <VideoBackground />
-      <div className="moved-up-container container">
+      <div className="moved-up-container container fade-in">
         <h1 className="my-4">Political News from the Liberal Left & Conservative Right</h1>
         <h3 className="my-4">Letting you choose what News you want to read</h3>
         <div className="row">
@@ -54,8 +54,8 @@ const Home: React.FC = () => {
           ))}
         </div>
         <PieChart />
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
@@ -76,3 +76,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+

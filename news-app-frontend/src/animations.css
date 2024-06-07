@@ -1,0 +1,25 @@
+/* src/animations.css */
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0; /* Completely transparent */
+    }
+    25% {
+      opacity: 0.25; /* 25% visible */
+    }
+    50% {
+      opacity: 0.5; /* 50% visible */
+    }
+    75% {
+      opacity: 0.75; /* 75% visible */
+    }
+    100% {
+      opacity: 1; /* Fully visible */
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 2s ease-in-out; /* Slower fade-in effect with ease-in-out timing function */
+  }
+  
+  

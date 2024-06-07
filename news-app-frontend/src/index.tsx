@@ -6,6 +6,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './animations.css';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);

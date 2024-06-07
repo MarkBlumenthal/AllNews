@@ -1,26 +1,23 @@
 /* src/components/VideoBackground.css */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 85vh; 
+  overflow: hidden;
+  z-index: 0;
+}
+
 .video-background {
-    position: absolute;
+  position: absolute;
     top: 42%;
     left: 50%;
     width: 90%;
-    height: 65vh; /* Set a specific height */
+    height: 65vh; 
     transform: translate(-50%, -50%);
     object-fit: cover;
     z-index: -1;
-  }
-  
-  .video-container {
-    position: relative;
-    width: 100%;
-    height: 85vh; /* Match the height of the video */
-    overflow: hidden;
-    z-index: 0;
-  }
-  
+}
 
-  
-  
 
   
 

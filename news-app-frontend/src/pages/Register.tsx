@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../features/auth/authSlice';
 import Footer from '../components/Footer';
-import './RegisterLogin.css'; 
+import './RegisterLogin.css'; // Import the CSS file
 
 const RegisterLogin: React.FC = () => {
   const [isRegister, setIsRegister] = useState(true);
@@ -25,7 +25,7 @@ const RegisterLogin: React.FC = () => {
           email,
           password,
         });
-        dispatch(loginSuccess(response.data.token)); 
+        dispatch(loginSuccess(response.data.token)); // Simulate login
         setMessage('Registration successful');
         navigate('/preferences');
       } else {
@@ -52,13 +52,13 @@ const RegisterLogin: React.FC = () => {
 
   return (
     <div className="register-page">
-      <div className="register-container container d-flex justify-content-center align-items-center flex-column">
+      <div className="register-container container d-flex justify-content-center align-items-center flex-column fade-in">
         <div className="card register-card">
           <div className="row no-gutters flex-column flex-md-row">
-            <div className="col-md-6 d-flex align-items-center justify-content-center">
+            <div className="col-md-6 d-flex align-items-center justify-content-center left-side">
               <img src="/logo1.webp" alt="Website Logo" className="logo img-fluid"/>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 right-side">
               <div className="card-body">
                 <h1 className="my-4">{isRegister ? 'User Registration' : 'User Login'}</h1>
                 {message && <div className="alert alert-info">{message}</div>}
@@ -116,9 +116,3 @@ const RegisterLogin: React.FC = () => {
 };
 
 export default RegisterLogin;
-
-
-
-
-
-
