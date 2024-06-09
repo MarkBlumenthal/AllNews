@@ -9,7 +9,7 @@ interface Comment {
   article_id: number;
   comment: string;
   created_at: string;
-  username: string; // Add the username property
+  username: string; 
 }
 
 interface CommentsState {

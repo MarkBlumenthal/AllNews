@@ -1,4 +1,10 @@
 // src/components/ArticleCard.tsx
+
+// The ArticleCard component is a component that displays an article's details, allows users to rate the article 
+// and shows a comment section for the article. It also handles fetching the article's rating
+//  from the server and updating it based on user interactions
+
+
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -22,6 +28,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
 
   const API_URL = process.env.REACT_APP_API_URL;
 
+
+
+  // Fetches the article's ratings when the component mounts or when article.url or API_URL changes
   useEffect(() => {
     if (API_URL) {
       axios.get(`${API_URL}/api/articles/ratings?articleUrl=${encodeURIComponent(article.url)}`)
@@ -44,6 +53,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
       return;
     }
 
+    // sends a POST request with the rating, and updates the state based on the response
     if (API_URL) {
       try {
         const response = await axios.post(
@@ -68,7 +78,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
     }
   };
 
-  // Determine the appropriate glow class based on the article source
+  // sets glow class based on the article source
   const glowClass = article.source.toLowerCase() === 'cnn' ? 'cnn-glow' : article.source.toLowerCase() === 'fox-news' ? 'fox-glow' : '';
 
   return (

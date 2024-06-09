@@ -10,6 +10,7 @@ interface DecodedToken {
   id: string;
 }
 
+// authenticates users by verifying a JWT token
 const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
 

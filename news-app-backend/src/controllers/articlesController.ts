@@ -5,6 +5,9 @@ import axios from 'axios';
 import { format, subDays } from 'date-fns';
 import { AuthRequest } from '../middleware/auth';
 
+// *******************************************************************************************************************
+
+// fetching articles from the neon-console database
 export const getArticles = async (req: Request, res: Response): Promise<void> => {
   try {
     const result = await pool.query("SELECT * FROM articles WHERE LOWER(source) IN ('cnn', 'fox-news') AND LOWER(category) = 'politics'");
@@ -14,6 +17,7 @@ export const getArticles = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
+// format and subDays are functions from the date-fns library used to manipulate dates
 export const fetchAndStoreArticles = async (req: Request, res: Response): Promise<void> => {
   try {
     const twoWeeksAgo = format(subDays(new Date(), 14), 'yyyy-MM-dd');
@@ -21,11 +25,14 @@ export const fetchAndStoreArticles = async (req: Request, res: Response): Promis
 
     const responseCNN = await axios.get(`https://newsapi.org/v2/everything?q=politics&sources=cnn&from=${twoWeeksAgo}&to=${today}&sortBy=publishedAt&apiKey=${process.env.NEWS_API_KEY}`);
     const responseFOX = await axios.get(`https://newsapi.org/v2/everything?q=politics&sources=fox-news&from=${twoWeeksAgo}&to=${today}&sortBy=publishedAt&apiKey=${process.env.NEWS_API_KEY}`);
-
+    // combining articles from CNN and Fox News into an array called articles
     const articles = [...responseCNN.data.articles, ...responseFOX.data.articles];
 
+
+    // create an array of promises
     const insertPromises = articles.map((article: any) => {
       const { title, description, url, urlToImage, publishedAt, source } = article;
+      // makes sure the source is either fox or cnn
       const normalizedSource = source.name.toLowerCase().includes('cnn') ? 'cnn' : 'fox-news';
       return pool.query(
         'INSERT INTO articles (title, description, url, urlToImage, publishedAt, source, category) VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (url) DO NOTHING',
@@ -66,6 +73,9 @@ export const getPoliticsArticles = async (req: Request, res: Response): Promise<
   }
 };
 
+
+// **********************************************************************************************************************
+
 // Add Rating
 export const addRating = async (req: AuthRequest, res: Response): Promise<void> => {
   const { articleUrl, rating } = req.body;
@@ -76,6 +86,7 @@ export const addRating = async (req: AuthRequest, res: Response): Promise<void> 
     return;
   }
 
+  // checks to see if the article exists by its url
   try {
     const articleResult = await pool.query('SELECT id FROM articles WHERE url = $1', [articleUrl]);
     if (articleResult.rows.length === 0) {
@@ -83,7 +94,7 @@ export const addRating = async (req: AuthRequest, res: Response): Promise<void> 
       return;
     }
     const articleId = articleResult.rows[0].id;
-
+// checks to see database to check if the user has already rated this article
     const existingRating = await pool.query('SELECT rating FROM article_ratings WHERE user_id = $1 AND article_id = $2', [userId, articleId]);
 
     if (existingRating.rows.length > 0) {
@@ -134,6 +145,8 @@ export const addRating = async (req: AuthRequest, res: Response): Promise<void> 
     res.status(500).json({ error: error.message });
   }
 };
+
+// *********************************************************************************************************************
 
 // Get Ratings
 export const getRatings = async (req: Request, res: Response): Promise<void> => {

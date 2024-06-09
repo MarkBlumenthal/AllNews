@@ -1,7 +1,7 @@
 // src/components/PieChart.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Pie } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';   
 import 'chart.js/auto';
 import './PieChart.css';
 
@@ -27,12 +27,14 @@ const PieChart: React.FC = () => {
     fetchRatings();
   }, []); // Removed API_URL from the dependency array
 
+  // calculates the thumbs uo from cnn and fox and calculates the percentage of likes based on number of thumbs up
   const totalCnnLikes = ratings.cnn.thumbs_up;
   const totalFoxLikes = ratings['fox-news'].thumbs_up;
   const totalLikes = totalCnnLikes + totalFoxLikes;
   const cnnPercentage = totalLikes > 0 ? (totalCnnLikes / totalLikes) * 100 : 0;
   const foxPercentage = totalLikes > 0 ? (totalFoxLikes / totalLikes) * 100 : 0;
 
+  // method is called on these percentage values to format them to two decimal places.
   const data = {
     labels: [`CNN ${cnnPercentage.toFixed(2)}%`, `Fox News ${foxPercentage.toFixed(2)}%`],
     datasets: [

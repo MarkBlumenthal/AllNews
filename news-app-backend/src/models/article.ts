@@ -8,3 +8,4 @@ export interface Article {
     publishedAt: string;
   }
   
+  // this is the interface that defines the structure of the article throughout the website
