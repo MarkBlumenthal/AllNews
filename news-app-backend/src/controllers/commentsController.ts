@@ -12,6 +12,7 @@ export const addComment = async (req: AuthRequest, res: Response): Promise<void>
     return;
   }
 
+  // we pair comments with the user id to an article with the article id
   try {
     const result = await pool.query(
       'INSERT INTO comments (user_id, article_id, comment) VALUES ($1, $2, $3) RETURNING *',

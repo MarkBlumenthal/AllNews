@@ -27,7 +27,7 @@ const PieChart: React.FC = () => {
     fetchRatings();
   }, []); // Removed API_URL from the dependency array
 
-  // calculates the thumbs uo from cnn and fox and calculates the percentage of likes based on number of thumbs up
+  // calculates the thumbs up from cnn and fox and calculates the percentage of likes based on number of thumbs up
   const totalCnnLikes = ratings.cnn.thumbs_up;
   const totalFoxLikes = ratings['fox-news'].thumbs_up;
   const totalLikes = totalCnnLikes + totalFoxLikes;

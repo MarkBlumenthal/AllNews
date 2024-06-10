@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
 import { logout } from '../features/auth/authSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navbar.css'; // Import the custom CSS file
+import './Navbar.css'; 
 
 const Navbar: React.FC = () => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);

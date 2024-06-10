@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../features/auth/authSlice';
 import Footer from '../components/Footer';
-import './RegisterLogin.css'; // Import the CSS file
+import './RegisterLogin.css'; 
 
 const RegisterLogin: React.FC = () => {
   const [isRegister, setIsRegister] = useState(true);

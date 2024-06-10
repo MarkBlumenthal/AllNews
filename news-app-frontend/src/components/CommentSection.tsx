@@ -6,8 +6,8 @@ import { fetchComments, addComment } from '../features/comments/commentsSlice';
 import { selectCommentsByArticleId } from '../features/comments/commentsSelectors';
 import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './ModalStyles.css'; // Import the modal CSS file
-import './CommentSection.css'; // Import the comment section CSS file
+import './ModalStyles.css'; 
+import './CommentSection.css'; 
 
 interface CommentSectionProps {
   articleId: number;

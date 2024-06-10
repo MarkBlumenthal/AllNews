@@ -2,7 +2,7 @@
 import React from 'react';
 import PieChart from '../components/PieChart';
 import Footer from '../components/Footer';
-import './About.css'; // Import the CSS file
+import './About.css'; 
 
 const About: React.FC = () => {
   return (
@@ -23,17 +23,17 @@ const About: React.FC = () => {
           Fox News and CNN. Our platform allows users to view articles side-by-side, providing a
           clear comparison between the two perspectives.
         </p>
-        {/* Space for logos and links */}
+       
         <div className="logos" style={{ display: 'flex', justifyContent: 'space-around', margin: '20px 0' }}>
           <div>
             <a href="https://www.foxnews.com" target="_blank" rel="noopener noreferrer">
-              {/* Placeholder for Fox News logo */}
+              
               <img src="Fox_News_Channel_logo.svg.png" alt="Fox News" style={{ width: '100px' }} />
             </a>
           </div>
           <div>
             <a href="https://www.cnn.com" target="_blank" rel="noopener noreferrer">
-              {/* Placeholder for CNN logo */}
+             
               <img src="CNN.svg.png" alt="CNN" style={{ width: '100px' }} />
             </a>
           </div>
