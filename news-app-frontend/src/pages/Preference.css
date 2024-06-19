@@ -1,0 +1,32 @@
+/* src/pages/Preference.css */
+
+
+/* Styles for the Liberal Media button */
+.liberal-button-container .btn-liberal {
+    background-color: blue !important;
+    border-color: blue !important;
+    color: white !important;
+  }
+  
+  .liberal-button-container .btn-liberal.active {
+    background-color: blue !important;
+    border-color: blue !important;
+    color: white !important;
+  }
+  
+  /* Styles for the Conservative Media button */
+  .conservative-button-container .btn-conservative {
+    background-color: red !important;
+    border-color: red !important;
+    color: white !important;
+  }
+  
+  .conservative-button-container .btn-conservative.active {
+    background-color: red !important;
+    border-color: red !important;
+    color: white !important;
+  }
+
+
+
+ 
